@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <!-- We are creating an Angular Module called 'myApp' -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+  <title>JS Bin</title>
+  <script>
+      angular.module('myApp', []).controller('MyController', myController);
+    
+      function myController($scope) {
+        $scope.name = 'James';
+        $scope.number = 0;
+        $scope.increment = function(amount) {
+          $scope.number = $scope.number + amount;
+        }
+        $scope.decrement = function() {
+          $scope.number = $scope.number - 1;
+        }
+      }
+  </script>
+  
+</head>
+  
+<body>
+  <div ng-controller="MyController">
+    Hello, my name is {{ name }}! 
+    <p> {{number}} </p>
+    <p><button ng-click="increment(1)">+1</button>
+       <button ng-click="decrement()">-1</button></p>
+  </div>
+</body>
+</html>
+
+
+
+<!-- When using more than one controller, best practices include the following -->
+
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <!-- We are creating an Angular Module called 'myApp' -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <script>
+      angular.module('myApp', [])
+        .controller('MyController', myController)
+        .controller('MySecondController', mySecondController)
+    
+      function myController() {
+        // vm stands for view model
+        var vm = this;
+        vm.name = 'James';
+      }
+    
+      function mySecondController() {
+        var vm = this;
+        vm.name = 'Tom';
+      }
+    
+  </script>
+  
+</head>
+  
+<body>
+  <div ng-controller="MyController as MyCtrl">
+       {{ MyCtrl.name }}
+    <div ng-controller="MySecondController as MySecondCtrl">
+       {{ MyCtrl.name }} or {{ MySecondCtrl.name }}
+    </div>
+  </div>
+  
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+</body>
+</html>

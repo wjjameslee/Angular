@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <!-- {{ }} in AngularJS represents expressions -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style> 
+      .ng-cloak [ng-cloak], [ng\:cloak] {
+        display: none !important;
+      }
+
+  </style>
+</head>
+  
+<body ng-cloak>
+      <div ng-init="rebels = [ {name : 'Luke Skywalker', profession : 'Jedi', weapon : 'Lightsaber', age : 19},
+                    {name : 'Ben Kenobi', profession : 'Jedi', weapon : 'Lightsaber', age : 56},
+                    {name : 'Han Solo', profession : 'Smuggler', weapon : 'Laser Blaster', age : 32},
+                    {name : 'Chewbacca', profession : 'Pilot', weapon : 'Bowcaster', age : 200} ]">
+
+                  <ul>
+                    <li ng-repeat="rebel in rebels"> {{ rebel.name }} </li>
+                  </ul>
+</div>
+
+
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>        
+</body>
+</html>
+
+
+<!-- Using ng-cloak we no longer see "{{ rebel.name}}" loading when we put the <script> tag right before the closing </body> tag
+which can help with performance -->

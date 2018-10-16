@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <!-- {{ }} in AngularJS represents expressions -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+  <title>JS Bin</title>
+</head>
+<body>
+      <div ng-init="number = 0">
+        <!-- p ng-bind="number"</p> -->
+        <button ng-click="number = number + 1">+1</button>
+        <button ng-click="number = number - 1">-1</button>
+        <p> {{ number }} </p>
+        
+      </div>
+        
+      Show me the paragraph
+      <input type="checkbox" ng-model="isChecked">
+       <p ng-if="isChecked">Secret Message!</p>
+       <!-- ng-if and ng-show do the same thing here, but there is an important difference
+            ng-if actually removes this element from the DOM tree, while ng-show will just use css elements to properly "hide" it . ng-if will make the element lose styling-->
+              
+      <div ng-init="num = 19">
+        <input type="text" ng-model="guess">
+          <p ng-hide="guess != num">Correct</p>
+          <p ng-show="guess != num">Incorrect</p>
+              
+      </div>
+</body>
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <!-- {{ }} in AngularJS represents expressions -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+  <title>JS Bin</title>
+  <style> 
+    .red {
+      border-color : red;
+    }
+    .green {
+      border-color : green;
+    }
+    .r {
+      color : red;
+    }
+    .gr {
+      color : green;
+    }
+  </style>
+</head>
+  
+<body>
+      <div ng-init="num = 19">
+        <!-- ng-class modifies the css class dynamically under some conditions -->
+        <input type="text" ng-model="guess" ng-class="{red: guess != num, green: guess == num}">
+              
+      </div>
+        
+      <div ng-init="numbers = [0, 1, 2, 3, 4, 5, 6, 7]">
+        <ul>
+          <li ng-repeat="number in numbers" ng-class="{r: $even, gr: $odd}">{{ number }}</li>
+        </ul>
+      </div>
+          
+      <div ng-init="names = ['Smith', 'Smith']">
+        <ul>
+          <li ng-repeat="name in names track by $index">{{name}}</li>
+        </ul>
+      </div>
+          
+      <div ng-init="object = [{surname : 'Smith', firstname : 'Joe'}, {surname : 'Smith', firstname : 'Sue'}]">
+        <ul>
+          <li ng-repeat="person in object">{{person.surname}}, {{person.firstname}}</li>
+      </div>
+          
+       
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <!-- {{ }} in AngularJS represents expressions -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+  <title>JS Bin</title>
+  <style> 
+    .red {
+      border-color : red;
+    }
+    .green {
+      border-color : green;
+    }
+    .r {
+      color : red;
+    }
+    .gr {
+      color : green;
+    }
+  </style>
+</head>
+  
+<body>
+      <div ng-init="rebels = [ {name : 'Luke Skywalker', profession : 'Jedi', weapon : 'Lightsaber', age : 19},
+                    {name : 'Ben Kenobi', profession : 'Jedi', weapon : 'Lightsaber', age : 56},
+                    {name : 'Han Solo', profession : 'Smuggler', weapon : 'Laser Blaster', age : 32},
+                    {name : 'Chewbacca', profession : 'Pilot', weapon : 'Bowcaster', age : 200} ]">
+  
+        <select name="" id="" ng-model="rebel" ng-options="rebel.name group by rebel.weapon for rebel in rebels"></select>
+        <p> You have selected: {{rebel.name}} ({{rebel.profession}})</p>
+  </div>
+  
+       
+          
+       
+</body>
+</html>
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <!-- {{ }} in AngularJS represents expressions -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+  <title>JS Bin</title>
+  
+</head>
+  
+<body>
+      <div ng-init="amount = 1250.50">
+        <p> {{ amount | currency:"&" }} </p>
+     </div>
+    <div ng-init="am = 1250.5067777">
+        <p> {{ am | number:4 }} </p>
+     </div>
+    <div ng-init="string = 'star wars'">
+        <p> {{ string | uppercase }} </p>
+     </div>
+  
+    <div ng-init="myDate = 1399648945000">
+        <p> {{ myDate | date:"yyyy - MMMM - d (H:m)" }} </p>
+     </div>
+  
+   <div ng-init="myArray = [0, 1, 2, 3, 4, 5]">
+        <p> {{ myArray | limitTo : -1 }} </p>
+     </div>
+  
+   <div ng-init="rebels = [ {name : 'Luke Skywalker', profession : 'Jedi', weapon : 'Lightsaber', age : 19},
+                    {name : 'Ben Kenobi', profession : 'Jedi', weapon : 'Lightsaber', age : 56},
+                    {name : 'Han Solo', profession : 'Smuggler', weapon : 'Laser Blaster', age : 32},
+                    {name : 'Chewbacca', profession : 'Pilot', weapon : 'Bowcaster', age : 200} ]">
+  
+  <ul>
+    <li ng-repeat="rebel in rebels | orderBy : ['profession', '-age']">{{rebel.name}} (age: {{rebel.age}}) is a {{ rebel.profession }} fighting with a {{rebel.weapon}}.</li>
+     </ul>
+  </div>
+  
+   <div ng-init="rebels = [ {name : 'Luke Skywalker', profession : 'Jedi', weapon : 'Lightsaber', age : 19},
+                    {name : 'Ben Kenobi', profession : 'Jedi', weapon : 'Lightsaber', age : 56},
+                    {name : 'Han Solo', profession : 'Smuggler', weapon : 'Laser Blaster', age : 32},
+                    {name : 'Chewbacca', profession : 'Pilot', weapon : 'Bowcaster', age : 200} ]">
+  
+  Weapon Filter: <input type="text" ng-model="filterBy.weapon">
+     <p>Free Text Search: <input type="text" ng-model="filterBy.$"</p>
+     
+  <ul>
+    <li ng-repeat="rebel in rebels | filter: filterBy">{{rebel.name}} (age: {{rebel.age}}) is a {{ rebel.profession }} fighting with a {{rebel.weapon}}.</li>
+     </ul>
+  </div>
+</body>
+</html>
